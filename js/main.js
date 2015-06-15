@@ -1,4 +1,4 @@
-stuff('/secure/index.html', document.getElementById("preview"), function(context) {
+stuff('secure/index.html', document.getElementById("preview"), function(context) {
     var html = CodeMirror.fromTextArea(document.getElementById('editor-html'), {
         lineNumbers: true,
         mode: 'text/html',
