@@ -1,72 +1,54 @@
-stuff('secure/index.html', document.getElementById("preview"), function(context) {
-    var html = CodeMirror.fromTextArea(document.getElementById('editor-html'), {
-        lineNumbers: true,
-        mode: 'text/html',
-        theme: 'cc',
-        lineWrapping: true,
-        styleActiveLine: true,
-        autoCloseTags: true,
-        matchTags: {
-            bothTags: true
-        },
-        matchBrackets: true
-    });
-    var css = CodeMirror.fromTextArea(document.getElementById('editor-css'), {
-        lineNumbers: true,
-        mode: 'text/css',
-        theme: 'cc',
-        lineWrapping: true,
-        styleActiveLine: true,
-        matchBrackets: true,
-        autoCloseBrackets: true
-    });
-    var js = CodeMirror.fromTextArea(document.getElementById('editor-js'), {
-        lineNumbers: true,
-        mode: 'javascript',
-        theme: 'cc',
-        lineWrapping: true,
-        styleActiveLine: true,
-        matchBrackets: true,
-        autoCloseBrackets: true
-    });
-    /*var js = CodeMirror.fromTextArea($('#js'), {
-      onChange: reload
-    , mode: 'javascript'
-    });
-    var css = CodeMirror.fromTextArea($('#css'), {
-      onChange: reload
-    , mode: 'css'
-    });*/
-    function initTabs() {
-        $('ul.tabs li:first').addClass('active');
-        $('.tabs-content > section').hide();
-        $('.tabs-content > section:first').show();
-        $('ul.tabs li').on('click', function() {
-            $('ul.tabs li').removeClass('active');
-            $(this).addClass('active')
-            $('.tabs-content > section').hide();
-            var activeTab = $(this).find('a').attr('href');
-            $(activeTab).show();
-            return false;
+if (!String.prototype.format) {
+    String.prototype.format = function() {
+        var args = arguments;
+        return this.replace(/{(\d+)}/g, function(match, number) {
+            return typeof args[number] != 'undefined' ? args[number] : match;
         });
-    }
-    html.on('change', reload);
-    css.on('change', reload);
-    js.on('change', reload);
-    initTabs();
-    var t = null;
+    };
+}
 
-    function reload() {
-        clearTimeout(t);
-        t = setTimeout(function() {
-            var code = '<!DOCTYPE html><html><head>';
-            code += '<style>'  + css.getValue() + '</style>';
-            code += '<body>' + html.getValue();
-            code += '<script>' + js.getValue() + '</script>'; 
-            code += '</body></html>';
-            context.load(code);
-        }, 50);
-    }
-    reload();
-});
-$()
+function loadStage(stage) {
+    stuff('secure/index.html', document.getElementById("preview"), function(context) {
+        var files = {};
+        var compiled_template = Hogan.compile(stage.template);
+        var t = null;
+
+        function reload() {
+            clearTimeout(t);
+            t = setTimeout(function() {
+                var ctx = {};
+                for (var file in files) {
+                    ctx[file] = files[file].getValue();
+                }
+                var code = compiled_template.render(ctx);
+                context.load(code);
+            }, 50);
+        }
+
+        function initTabs() {
+            $('ul.tabs li:first').addClass('active');
+            $('.tabs-content > section').hide();
+            $('.tabs-content > section:first').show();
+            $('ul.tabs li').on('click', function() {
+                $('ul.tabs li').removeClass('active');
+                $(this).addClass('active')
+                $('.tabs-content > section').hide();
+                var activeTab = $(this).find('a').attr('href');
+                $(activeTab).show();
+                return false;
+            });
+        }
+        for (var file in stage.files) {
+            $('#file-tabs').append('<li><a href="#{0}">{1}</a></li>'.format(stage.files[file].mapping, file));
+            $('#editors').append('<section id="{0}"><textarea id="editor-{0}"></textarea></section>'.format(stage.files[file].mapping))
+            files[stage.files[file].mapping] = CodeMirror.fromTextArea(document.getElementById('editor-{0}'.format(stage.files[file].mapping)),
+                stage.files[file].cmOption
+            );
+        }
+        for (var file in files) {
+            files[file].on('change', reload);
+        }
+        initTabs();
+        reload();
+    });
+}

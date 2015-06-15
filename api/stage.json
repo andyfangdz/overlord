@@ -1,0 +1,45 @@
+{
+    "title": "Some Training Element",
+    "files": {
+        "index.html": {
+            "mapping": "body",
+            "cmOption": {
+                "lineNumbers": true,
+                "mode": "text/html",
+                "theme": "cc",
+                "lineWrapping": true,
+                "styleActiveLine": true,
+                "autoCloseTags": true,
+                "matchTags": {
+                    "bothTags": true
+                },
+                "matchBrackets": true
+            }
+        },
+        "style.css": {
+            "mapping": "style",
+            "cmOption": {
+                "lineNumbers": true,
+                "mode": "text/css",
+                "theme": "cc",
+                "lineWrapping": true,
+                "styleActiveLine": true,
+                "autoCloseBrackets": true,
+                "matchBrackets": true
+            }
+        },
+        "script.js": {
+            "mapping": "script",
+            "cmOption": {
+                "lineNumbers": true,
+                "mode": "javascript",
+                "theme": "cc",
+                "lineWrapping": true,
+                "styleActiveLine": true,
+                "autoCloseBrackets": true,
+                "matchBrackets": true
+            }
+        }
+    },
+    "template": "<!DOCTYPE html><html><head><style>{{style}}</style><body>{{body}}<script>{{script}}</script></body>"
+}
