@@ -1,0 +1,81 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <title>Do it</title>
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/codemirror.css">
+    <link rel="stylesheet" href="/css/cm-custom.css">
+    <link rel="stylesheet" href="/js/addon/dialog/dialog.css">
+    <link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Cantata+One" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <article>
+        <header>
+            <h3>Example Execrise Resources - Demo</h3>
+        </header>
+        <div class="app">
+            <aside>
+                <p>
+                    Well done! The city_name now shows up in the view. How does it work?
+                </p>
+                <ol>
+                    <li>First in js/services/forecast.js, we made a new service. We used app.factory to create a new service named forecast
+                        <li>The forecast service needs to use AngularJS's built-in $http to fetch JSON from the server. Therefore, we add $http to the forecast service as a dependency, like this:
+                            <li>Then, inside forecast, we use $http to construct an HTTP GET request for the weather data. If the request succeeds, the weather data is returned; otherwise the error info is returned.
+                                <li>Next in the controller, we used the forecast service to fetch data from the server. First we added forecast into MainController as a dependency so that it's available to use. Then within the controller we used forecast to asynchronously fetch the weather data from the server and store it into $scope.fiveDay
+                </ol>
+            </aside>
+            <aside class="code">
+                <header>
+                    <ul class="tabs">
+                        <li class="active"><a href="#index-html">index.html</a></li>
+                        <li><a href="#style-css">style.css</a></li>
+                        <li><a href="#script-js">script.js</a></li>
+                    </ul>
+                </header>
+                <article class="tabs-content">
+                    <section id="index-html">
+                        <textarea id="editor-html"></textarea>
+                    </section>
+                    <section id="style-css">
+                        <textarea id="editor-css"></textarea>
+                    </section>
+                    <section id="script-js">
+                        <textarea id="editor-js"></textarea>
+                    </section>
+                </article>
+            </aside>
+            <aside class="preview" id="preview">
+            </aside>
+        </div>
+        <footer>
+        </footer>
+    </article>
+    <script src="/js/codemirror.js"></script>
+    <script src="/js/addon/selection/active-line.js"></script>
+    <script src="/js/addon/dialog/dialog.js"></script>
+    <script src="/js/addon/search/search.js"></script>
+    <script src="/js/addon/search/searchcursor.js"></script>
+    <script src="/js/addon/edit/closebrackets.js"></script>
+    <script src="/js/addon/edit/closetag.js"></script>
+    <script src="/js/addon/edit/matchtags.js"></script>
+    <script src="/js/addon/fold/xml-fold.js"></script>
+    <script src="/js/addon/edit/matchbrackets.js"></script>
+    <script src="/js/mode/css/css.js"></script>
+    <script src="/js/mode/javascript/javascript.js"></script>
+    <script src="/js/mode/xml/xml.js"></script>
+    <script src="/js/mode/htmlmixed/htmlmixed.js"></script>
+    <script src="/js/interact.min.js"></script>
+    <script src="/js/stuff.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery-ui.min.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>
