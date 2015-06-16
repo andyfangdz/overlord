@@ -3,7 +3,7 @@
     "files": {
         "index.html": {
             "mapping": "body",
-            "initialCode": "<h1>\nHeader level 1\n</h1>",
+            "initialCode": "<h1>\nHeader\n</h1>",
             "cmOption": {
                 "lineNumbers": true,
                 "mode": "text/html",
@@ -44,13 +44,28 @@
             }
         }
     },
-    "template": "<!DOCTYPE html><html><head><style>{{{style}}}</style><body>{{{body}}}<script>{{{script}}}</script></body>",
+    "template": "<!DOCTYPE html><html><head><script src='http://libs.useso.com/js/jquery/2.1.1/jquery.js'></script><style>{{{style}}}</style><body>{{{body}}}<script>{{{script}}}</script></body>",
     "description": "The following are a few tasks for you to try.",
-    "tasks": {
-        "blah": {
-            "goal": "hhhhhhhh",
-            "description": "de-duh",
-            "checker": "function() {return true;}"
-        }
-    }
+    "tasks": [{
+        "id": 1,
+        "title": "Add a level 1 header",
+        "content": "Add a level 1 header with text <code>Header</code>",
+        "checker": "function checker() {return $('h1').html().trim() == 'Header'} checker();",
+        "errorMsg": "Did you add a level 1 header with text <code>Header</code>?",
+        "state": "next"
+    }, {
+        "id": 2,
+        "title": "Add a level 2 header",
+        "content": "Add a level 2 header with text <code>Header</code>",
+        "checker": "function checker() {return $('h2').html().trim() == 'Header'} checker();",
+        "state": "future",
+        "errorMsg": "Did you add a level 2 header with text <code>Header</code>?"
+    }, {
+        "id": 3,
+        "title": "Add a level 3 header",
+        "content": "Add a level 3 header with text <code>Header</code>",
+        "checker": "function checker() {return $('h3').html().trim() == 'Header'} checker();",
+        "state": "future",
+        "errorMsg": "Did you add a level 3 header with text <code>Header</code>?"
+    }]
 }

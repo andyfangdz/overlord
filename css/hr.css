@@ -1,0 +1,39 @@
+
+hr {
+    position: relative;
+    height: 1px;
+    border: none;
+    width: 75%;
+}
+
+hr:before,
+hr:after {
+    position: absolute;
+    margin-top: -2px;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    content: "";
+}
+
+hr:before {
+    left: 0;
+}
+
+hr:after {
+    right: 0;
+}
+/* default color */
+
+hr,
+hr:before,
+hr:after {
+    background-color: #000;
+}
+/* red */
+
+hr.red,
+hr.red:before,
+hr.red:after {
+    background-color: #f00;
+}

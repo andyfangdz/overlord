@@ -1,0 +1,25 @@
+ul.tabs {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.tabs > li {
+    float: left;
+    margin: 0 .25em 0 0;
+    padding: .25em .5em;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #5f6467;
+}
+
+ul.tabs > li.active {
+    background-color: #263238;
+}
+
+ul.tabs > li > a {
+    line-height: 21px;
+    text-decoration: none;
+    font-weight: bold;
+    color: white;
+}

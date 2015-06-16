@@ -102,8 +102,7 @@
     try {
       res = iframe.contentWindow['eval'](js);
     } catch (e) {
-      report(e, null);
-      throw e;
+      report(null, false);
     }
     report(null, res);
   }
