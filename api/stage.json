@@ -3,6 +3,7 @@
     "files": {
         "index.html": {
             "mapping": "body",
+            "initialCode": "<h1>\nHeader level 1\n</h1>",
             "cmOption": {
                 "lineNumbers": true,
                 "mode": "text/html",
@@ -18,6 +19,7 @@
         },
         "style.css": {
             "mapping": "style",
+            "initialCode": "body {\nbackground-color: white;\n}",
             "cmOption": {
                 "lineNumbers": true,
                 "mode": "text/css",
@@ -30,6 +32,7 @@
         },
         "script.js": {
             "mapping": "script",
+            "initialCode": "var data = 0;",
             "cmOption": {
                 "lineNumbers": true,
                 "mode": "javascript",
@@ -41,5 +44,13 @@
             }
         }
     },
-    "template": "<!DOCTYPE html><html><head><style>{{style}}</style><body>{{body}}<script>{{script}}</script></body>"
+    "template": "<!DOCTYPE html><html><head><style>{{{style}}}</style><body>{{{body}}}<script>{{{script}}}</script></body>",
+    "description": "The following are a few tasks for you to try.",
+    "tasks": {
+        "blah": {
+            "goal": "hhhhhhhh",
+            "description": "de-duh",
+            "checker": "function() {return true;}"
+        }
+    }
 }
